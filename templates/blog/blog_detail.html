@@ -1,0 +1,8 @@
+{% extends "master/base.html" %} {% block title %} {{ blog.title }} Details 
+{%endblock%} {% block content%}
+<h2>Blog Details</h2>
+<h5> Title : {{ blog.title }}</h1>  
+<h6> Description: {{ blog.content }}</h2>
+
+<a href="{% url 'home' %}">Back to home</a>
+{% endblock %}
