@@ -2,5 +2,10 @@
 {% block content %}
 <h2>{{ blog.title }}</h2>
 <p>{{ blog.description }}</p>
+{% if blog.blog_image %}
+    <img src="{{ blog.blog_image.url }}" alt="{{ blog.title }}" style="max-width: 300px;">
+{% else %}
+    <p>No image available for this blog post.</p>
+{% endif %}
 <a href="{% url 'blog' %}">← Back to Blogs</a>
 {% endblock %}

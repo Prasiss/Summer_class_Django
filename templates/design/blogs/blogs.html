@@ -4,6 +4,11 @@
 <ul>
   {% for blog in blogs %}
     <li><a href="{% url 'blog_detail' blog.pk %}">{{ blog.title }}</a></li>
+    {% if blog.blog_image %}
+        <img src="{{ blog.blog_image.url }}" alt="{{ blog.title }}" style="max-width: 100px;">
+    {% else %}
+        <p>No image available for this blog post.</p>
+    {% endif %}
   {% endfor %}
 </ul>
 {% endblock %}

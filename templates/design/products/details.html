@@ -3,5 +3,11 @@
 <h2>{{ product.name }}</h2>
 <p><strong>Price:</strong> Rs. {{ product.price }}</p>
 <p>{{ product.description }}</p>
+
+{% if product.product_image %}
+    <img src="{{ product.product_image.url }}" alt="{{ product.name }}" style="max-width: 300px;">
+{% else %}
+    <p>No image available for this product.</p>
+{% endif %}
 <a href="{% url 'products' %}">← Back to Products</a>
 {% endblock %}

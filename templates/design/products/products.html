@@ -4,6 +4,12 @@
 <ul>
   {% for product in products %}
     <li><a href="{% url 'product_detail' product.pk %}">{{ product.name }}</a> – Rs. {{ product.price }}</li>
+    {% if product.product_image %}
+        <img src="{{ product.product_image.url }}" alt="{{ product.name }}" style="max-width: 100px;">
+    {% else %}
+        <p>No image available for this product.</p>
+    {% endif %}
   {% endfor %}
+  
 </ul>
 {% endblock %}
