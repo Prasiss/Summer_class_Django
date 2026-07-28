@@ -1,11 +1,11 @@
-{% extends 'design/master/base.html' %}
+{% extends 'design/master/base1.html' %}
 {% block content %}
 <h2>All Blog Posts</h2>
 <ul>
   {% for blog in blogs %}
-    <li><a href="{% url 'blog_detail' blog.pk %}">{{ blog.title }}</a></li>
+    <li><a href="{% url 'blog_detail' blog.pk %}">{{ blog.title }}</li></a>
     {% if blog.blog_image %}
-        <img src="{{ blog.blog_image.url }}" alt="{{ blog.title }}" style="max-width: 100px;">
+        <a href="{% url 'blog_detail' blog.pk %}"><img src="{{ blog.blog_image.url }}" alt="{{ blog.title }}" style="max-width: 100px;"></a>
     {% else %}
         <p>No image available for this blog post.</p>
     {% endif %}

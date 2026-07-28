@@ -1,4 +1,4 @@
-{% extends 'master/base1.html' %}
+{% extends 'design/master/base1.html' %}
 {% block content %}
 <h2 class="mb-4">Featured Products</h2>
 <div class="row">
@@ -6,6 +6,13 @@
     <div class="col-md-4 mb-3">
       <div class="card">
         <div class="card-body">
+          {% if product.product_image %}
+            <a href="{% url 'product_detail' product.pk %}">
+              <img src="{{ product.product_image.url }}" alt="{{ product.name }}" class="card-img-top" style="max-width: 100%; height: 300px;">
+            </a>
+          {% else %}
+            <p>No image available for this product.</p>
+          {% endif %}
           <h5 class="card-title">{{ product.name }}</h5>
           <p class="card-text">Rs. {{ product.price }}</p>
           <a href="{% url 'product_detail' product.pk %}" class="btn btn-primary">View</a>
@@ -16,11 +23,23 @@
 </div>
 
 <h2 class="mt-5 mb-4">Latest Blogs</h2>
-<div class="list-group">
+<div class="list-group" style="display: flex; flex-wrap: wrap; gap: 20px; flex-direction: row; justify-content: flex-start;">
   {% for blog in blogs %}
-    <a href="{% url 'blog_detail' blog.pk %}" class="list-group-item list-group-item-action">
-      {{ blog.title }}
-    </a>
+  <div style="border: 1px solid #ddd; padding: 15px; border-radius: 5px; display: flex; flex-direction: column; gap: 10px; width:400px; height: auto;">
+      <a href="{% url 'blog_detail' blog.pk %}" style="font-size: 1.5rem; font-weight: bold; text-decoration: none; color: #007bff;">
+        {{ blog.title }}
+      </a>
+      {{ blog.content|truncatewords:20 }}
+      {% if blog.content|length > 20 %}
+          <span class="text-muted">... <a href="{% url 'blog_detail' blog.pk %}">Read more</a></span>
+      {% endif %}
+      <br>
+      {% if blog.blog_image %}
+          <img src="{{ blog.blog_image.url }}" alt="{{ blog.title }}" style="width: 300px; margin-top: 10px;">
+      {% else %}
+          <p>No image available for this blog post.</p>
+      {% endif %}
+  </div>
   {% endfor %}
 </div>
 {% endblock %}

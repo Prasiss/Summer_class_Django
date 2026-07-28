@@ -1,11 +1,11 @@
-{% extends 'design/master/base.html' %}
+{% extends 'design/master/base1.html' %}
 {% block content %}
 <h2>All Products</h2>
 <ul>
   {% for product in products %}
-    <li><a href="{% url 'product_detail' product.pk %}">{{ product.name }}</a> – Rs. {{ product.price }}</li>
+  <li><a href="{% url 'product_detail' product.pk %}">{{ product.name }}</a>-– Rs. {{ product.price }}</li>
     {% if product.product_image %}
-        <img src="{{ product.product_image.url }}" alt="{{ product.name }}" style="max-width: 100px;">
+        <a href="{% url 'product_detail' product.pk %}"><img src="{{ product.product_image.url }}" alt="{{ product.name }}" style="max-width: 100px;"></a>
     {% else %}
         <p>No image available for this product.</p>
     {% endif %}

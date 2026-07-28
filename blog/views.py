@@ -4,8 +4,8 @@ from .models import Blog
 # Create your views here.
 def blog(request):
     blogs= Blog.objects.all()
-    return render(request, 'design/blogs/blogs.html',{'blogs': blogs})
+    return render(request, 'design/blogs/blogs1.html',{'blogs': blogs})
 
 def blog_detail(request, id):
     blog= get_object_or_404(Blog, id=id)
-    return render(request, 'design/blogs/details.html',{'blog': blog})
+    return render(request, 'design/blogs/details1.html',{'blog': blog})

@@ -6,5 +6,5 @@ from blog.models import Blog
 def home(request):
     products = Product.objects.all()
     blogs = Blog.objects.all()
-    return render (request, 'design/home/home.html', {'products':products, 'blogs':blogs})
+    return render (request, 'design/home/home1.html', {'products':products, 'blogs':blogs})
 

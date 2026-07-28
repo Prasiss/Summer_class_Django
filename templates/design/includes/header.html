@@ -3,7 +3,10 @@
   <nav>
     <a href="{% url 'home' %}">Home</a> |
     <a href="{% url 'products' %}">Products</a> |
-    <a href="{% url 'blog' %}">Blogs</a>
+    <a href="{% url 'blog' %}">Blogs</a> |
+    {% for page in pages %}
+          <a class="nav-link" href="{% url 'page_detail' page.slug %}">{{ page.title }}</a> |
+    {% endfor %}
   </nav>
 </header>
 <hr />

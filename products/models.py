@@ -17,6 +17,7 @@ class Product(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     product_image = models.ImageField(upload_to='photos/products',blank=True)
+    featured_product = models.BooleanField(default=False)
     
     def __str__(self):
         return self.name
