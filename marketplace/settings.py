@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'products.apps.ProductsConfig',
     'blog.apps.BlogConfig',
     'pages.apps.PagesConfig',
+    'sitesetting.apps.SitesettingConfig',
 ]
 
 MIDDLEWARE = [
@@ -66,6 +67,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'pages.context_processors.pages_links',
+                
             ],
         },
     },
