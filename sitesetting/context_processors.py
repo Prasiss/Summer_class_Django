@@ -1,6 +1,6 @@
-from . models import Page
+from . models import SiteSetting
 
-def pages_links(request):
-    pages = Page.objects.first()
-    return {'pages': pages}
-    
+def site_settings(request):
+    settings =SiteSetting.objects.first()
+    return {
+        'site_settings': settings}

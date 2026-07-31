@@ -7,7 +7,7 @@ class SiteSetting(models.Model):
     meta_keywords = models.TextField(blank=True, null=True)
     logo = models.ImageField(upload_to='photos/logo', blank=True, null=True)
     favicon = models.ImageField(upload_to='photos/favicon', blank=True, null=True)
-    
+    copyright = models.TextField(max_length=200,blank=True, null=True)
     
     def __str__(self):
         return self.site_title

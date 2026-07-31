@@ -2,7 +2,17 @@
 <!doctype html>
 <html>
   <head>
-    <title>{% block title %}My Marketplace{% endblock %}</title>
+    <title>{{site_setting.site_title}}</title>
+    <meta name="description" content="{{site_setting.meta_description}}">
+    <meta name="keywords" content="{{site_setting.meta_keywords|default:''}}">
+    {% if site_settings.favicon %}
+      <link rel="icon" href="{{site_settings.favicon.url}}" type="image/x-icon" />
+    {% endif %}
+    <meta property="og:title" content="{{site_setting.site_title}}">
+    <meta property="og:description" content="{{site_setting.meta_description}}">
+    {% if site_settings.og_image %}
+      <meta property="og:image" content="{{site_settings.og_image.url}}">
+    {% endif %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
   </head>
   <body>
