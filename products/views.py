@@ -6,9 +6,14 @@ from .models import Product,Category
 
 def products(request):
     products = Product.objects.all()
-    return render(request, 'design/products/products1.html',{'products':products})
+    return render(request, 'main/products.html',{'products':products})
     
-def product_details(request, id):
+def product_details(request,id):
     product = get_object_or_404(Product, id=id)
-    return render(request, 'design/products/details1.html',{'product': product})
+    return render(request, 'main/product_details.html',{'product':product})
 
+def add_to_cart(request):
+    return render(request, 'main/addtocart.html')
+
+def checkout(request):
+    return render(request, 'main/checkout.html')
