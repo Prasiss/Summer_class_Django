@@ -61,6 +61,11 @@ def message_details(request):
 def edit_profile(request):
     return render(request, 'main/accounts/edit_profile.html')
 
-
 def sent(request):
     return render(request, 'main/accounts/sent.html')
+
+def login(request):
+    return render(request, 'main/login.html')
+
+def register(request):
+    return render(request, 'main/register.html')

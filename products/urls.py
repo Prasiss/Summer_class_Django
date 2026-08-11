@@ -21,6 +21,9 @@ urlpatterns = [
 
     path('my-request/', views.sent_messages, name='sent_messages'),
     path('my-request-received/', views.message_details, name='message_details'),
+    
+    path('login/', views.login, name='Login'),
+    path('register/', views.register, name='register'),
 
     path('sent/', views.sent, name='sent'),
 ]
