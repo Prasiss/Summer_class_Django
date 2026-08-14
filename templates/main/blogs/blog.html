@@ -1,0 +1,27 @@
+{% extends 'main/master/base.html' %} {% block content %}
+<h2 class="mb-4">All Blogs</h2>
+<div class="list-group">
+  {% for blog in blogs %}
+  <a
+    href="{% url 'blog_detail' blog.pk %}"
+    class="list-group-item list-group-item-action"
+    style="margin-top: 30px"
+  >
+    {{ blog.title }}
+  </a>
+  {{ blog.content|truncatewords:20 }} {% if blog.content|length > 20 %}
+  <span class="text-muted"
+    >... <a href="{% url 'blog_detail' blog.pk %}">Read more</a></span
+  >
+  {% endif %} {% if blog.blog_image %}
+  <a href="{% url 'blog_detail' blog.pk %}"
+    ><img
+      src="{{ blog.blog_image.url }}"
+      alt="{{ blog.title }}"
+      style="width: 300px"
+  /></a>
+  {% else %}
+  <p>No image available for this blog post.</p>
+  {% endif %} {% endfor %}
+</div>
+{% endblock %}

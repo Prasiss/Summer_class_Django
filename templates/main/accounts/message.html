@@ -1,429 +1,157 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="pragma" content="no-cache" />
-    <meta http-equiv="cache-control" content="max-age=604800" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
+{% extends "main/main/base.html" %} {% block content %}
+<section class="section-conten padding-y bg">
+  <div class="container">
+    <div class="row">
+      <aside class="col-md-3">
+        <ul class="list-group">
+          <a class="list-group-item" href="/accounts/dashboard/"> Dashboard </a>
+          <a class="list-group-item" href="/accounts/my-products/">
+            My Products
+          </a>
+          <a class="list-group-item" href="/accounts/add-product/">
+            Add Product
+          </a>
 
-    <title>Islington Marketplace | Islington Shopping Platform</title>
-    <meta name="description" content="Islington MarketPlace" />
-    <meta name="keywords" content="Islington MarketPlace, Islington" />
+          <a class="list-group-item" href="/accounts/my-orders/"> My Orders </a>
+          <a class="list-group-item" href="/accounts/my-sales/"> My Sales </a>
+          <a class="list-group-item" href="/accounts/my-requests-sent/">
+            My Sent Requests
+          </a>
+          <a class="list-group-item" href="/accounts/my-requests-received/">
+            My Received Requests
+          </a>
+          <a class="list-group-item" href="/accounts/messages/inbox/">
+            Messages
+          </a>
 
-    <meta property="og:image" content="/media/photos/logos/Logo_v6RgqOa.PNG" />
+          <a class="list-group-item" href="/accounts/messages/sent/"> Sent </a>
 
-    <link
-      href="/media/photos/favicons/favicon_JdpId9u.ico"
-      rel="shortcut icon"
-      type="image/x-icon"
-    />
+          <a class="list-group-item" href="/accounts/edit-profile/">
+            Edit Profile
+          </a>
 
-    <!-- Open Graph for social media -->
-    <meta
-      property="og:title"
-      content="Islington Marketplace | Islington Shopping Platform"
-    />
-    <meta property="og:description" content="Islington MarketPlace" />
+          <a class="list-group-item" href="/accounts/change-password/">
+            Change Password
+          </a>
+        </ul>
+        <br />
+        <a class="btn btn-light btn-block" href="/accounts/logout/">
+          <i class="fa fa-power-off"></i> <span class="text">Log out</span>
+        </a>
+      </aside>
 
-    <!-- jQuery -->
-    <script
-      src="/static/js/jquery-2.0.0.min.js"
-      type="text/javascript"
-    ></script>
+      <main class="col-md-9">
+        <a href="javascript:history.back()" class="btn btn-sm btn-light mb-3">
+          <i class="fa fa-arrow-left mr-1"></i> Back
+        </a>
 
-    <!-- Bootstrap4 files-->
-    <script
-      src="/static/js/bootstrap.bundle.min.js"
-      type="text/javascript"
-    ></script>
-    <link href="/static/css/bootstrap.css" rel="stylesheet" type="text/css" />
-
-    <!-- Font awesome 5 -->
-    <link
-      href="/static/fonts/fontawesome/css/all.min.css"
-      type="text/css"
-      rel="stylesheet"
-    />
-
-    <link href="/static/css/custom.css" type="text/css" rel="stylesheet" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-
-    <!-- custom style -->
-    <link href="/static/css/ui.css" rel="stylesheet" type="text/css" />
-    <link
-      href="/static/css/responsive.css"
-      rel="stylesheet"
-      media="only screen and (max-width: 1200px)"
-    />
-
-    <!-- custom javascript -->
-    <script src="/static/js/script.js" type="text/javascript"></script>
-
-    <script type="text/javascript">
-      /// some script
-
-      // jquery ready start
-      $(document).ready(function () {
-        // jQuery code
-      });
-      // jquery end
-    </script>
-  </head>
-  <body>
-    <header class="section-header">
-      <nav class="navbar p-md-0 navbar-expand-sm navbar-light border-bottom">
-        <div class="container">
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarTop4"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarTop4">
-            <ul class="navbar-nav mr-auto">
-              <li class="nav-item dropdown">
-                <a href="#" class="nav-link"> English </a>
-              </li>
-              <li class="nav-item dropdown">
-                <a href="#" class="nav-link"> USD </a>
-              </li>
-            </ul>
-            <ul class="navbar-nav">
-              <li>
-                <a href="#" class="nav-link">
-                  <i class="fa fa-envelope"></i> Email
-                </a>
-              </li>
-              <li>
-                <a href="#" class="nav-link">
-                  <i class="fa fa-phone"></i> Call us
-                </a>
-              </li>
-            </ul>
-            <!-- list-inline //  -->
-          </div>
-          <!-- navbar-collapse .// -->
-        </div>
-        <!-- container //  -->
-      </nav>
-
-      <section class="header-main border-bottom">
-        <div class="container">
-          <div class="row align-items-center">
-            <div class="col-lg-2 col-md-3 col-6">
-              <a href="/" class="brand-wrap">
-                <img class="logo" src="/media/photos/logos/Logo_v6RgqOa.PNG" />
-              </a>
-              <!-- brand-wrap.// -->
+        <article class="card">
+          <header class="card-header d-flex align-items-center">
+            <!-- Seller avatar -->
+            <div class="mr-3">
+              <img
+                src="/static/images/default/default-user.png"
+                class="rounded-circle"
+                style="width: 48px; height: 48px; object-fit: cover"
+                alt="Seller"
+              />
             </div>
-            <div class="col-lg col-sm col-md col-6 flex-grow-0">
-              <div class="category-wrap dropdown d-inline-block float-right">
-                <button
-                  type="button"
-                  class="btn btn-primary dropdown-toggle"
-                  data-toggle="dropdown"
+
+            <!-- Seller info -->
+            <div class="flex-grow-1">
+              <strong class="d-block"> Sandhya Dumre </strong>
+              <small class="text-muted"> Member since Aug 2026 </small>
+            </div>
+
+            <!-- Optional product chip -->
+          </header>
+
+          <div class="card-body">
+            <!-- Django messages -->
+
+            <form method="post" novalidate>
+              <input
+                type="hidden"
+                name="csrfmiddlewaretoken"
+                value="cWnmpQBGImoJUSE7ICvu1pa23fd5OajfYRm3ZKdndjvP77fWNyiE205u8ja6s4GB"
+              />
+
+              <!-- Subject -->
+              <div class="form-group">
+                <label for="id_subject" class="font-weight-semibold"
+                  >Subject</label
                 >
-                  <i class="fa fa-bars"></i> All category
+                <input
+                  type="text"
+                  name="subject"
+                  class="form-control"
+                  placeholder="Subject"
+                  maxlength="120"
+                  required
+                  id="id_subject"
+                />
+
+                <small class="form-text text-muted"
+                  >Be clear and concise (e.g., “Question about sizing”).</small
+                >
+              </div>
+
+              <!-- Message -->
+              <div class="form-group mb-1">
+                <label for="id_message" class="font-weight-semibold"
+                  >Message</label
+                >
+                <textarea
+                  name="message"
+                  cols="40"
+                  rows="5"
+                  class="form-control"
+                  placeholder="Write your message…"
+                  required
+                  id="id_message"
+                ></textarea>
+
+                <small class="form-text text-muted"
+                  >Include order details or product link if relevant.</small
+                >
+              </div>
+
+              <!-- Character counter -->
+              <div
+                class="d-flex justify-content-between align-items-center mb-3"
+              >
+                <small class="text-muted">
+                  <span id="msg-count">0</span> characters
+                </small>
+              </div>
+
+              <div class="d-flex justify-content-end">
+                <button type="submit" class="btn btn-primary">
+                  <i class="fa fa-paper-plane mr-1"></i> Send
                 </button>
-                <div class="dropdown-menu">
-                  <a class="dropdown-item" href="/store/">All Products </a>
-
-                  <a class="dropdown-item" href="/store/category/accessories/">
-                    Accessories
-                  </a>
-
-                  <a class="dropdown-item" href="/store/category/books/">
-                    Books
-                  </a>
-
-                  <a class="dropdown-item" href="/store/category/electronics/">
-                    Electronics
-                  </a>
-
-                  <a class="dropdown-item" href="/store/category/shirts/">
-                    Shirts
-                  </a>
-
-                  <a class="dropdown-item" href="/store/category/jeans/">
-                    Jeans
-                  </a>
-
-                  <a class="dropdown-item" href="/store/category/shoes/">
-                    Shoes
-                  </a>
-
-                  <a class="dropdown-item" href="/store/category/jackets/">
-                    Jackets
-                  </a>
-
-                  <a class="dropdown-item" href="/store/category/home-living/">
-                    Home &amp; Living
-                  </a>
-                </div>
               </div>
-              <!-- category-wrap.// -->
-            </div>
-            <!-- col.// -->
-            <a href="/store/" class="btn btn-outline-primary">Store</a>
-            <div class="col-lg col-md-6 col-sm-12 col">
-              <form action="/store/search/" class="search" method="GET">
-                <div class="input-group w-100">
-                  <input
-                    type="text"
-                    class="form-control"
-                    style="width: 60%"
-                    placeholder="Search"
-                    name="keyword"
-                  />
-
-                  <div class="input-group-append">
-                    <button class="btn btn-primary" type="submit">
-                      <i class="fa fa-search"></i>
-                    </button>
-                  </div>
-                </div>
-              </form>
-              <!-- search-wrap .end// -->
-            </div>
-            <!-- col.// -->
-            <div class="col-lg-3 col-sm-6 col-8 order-2 order-lg-3">
-              <div class="d-flex justify-content-end mb-3 mb-lg-0">
-                <div class="widget-header">
-                  <small class="title text-muted">Welcome Prasim!</small>
-                  <div>
-                    <a href="/accounts/dashboard/">Dashboard</a>
-                    <span class="dark-transp"> | </span>
-                    <a href="/accounts/logout/"> Logout</a>
-                  </div>
-                </div>
-
-                <a href="/cart/" class="widget-header pl-3 ml-3">
-                  <div class="icon icon-sm rounded-circle border">
-                    <i class="fa fa-shopping-cart"></i>
-                  </div>
-                  <span class="badge badge-pill badge-danger notify">1</span>
-                </a>
-              </div>
-              <!-- widgets-wrap.// -->
-            </div>
-            <!-- col.// -->
+            </form>
           </div>
-          <!-- row.// -->
-        </div>
-        <!-- container.// -->
-      </section>
-      <!-- header-main .// -->
-    </header>
-    <!-- section-header.// -->
+        </article>
+      </main>
+    </div>
+  </div>
+</section>
 
-    <section class="section-conten padding-y bg">
-      <div class="container">
-        <div class="row">
-          <aside class="col-md-3">
-            <ul class="list-group">
-              <a class="list-group-item" href="/accounts/dashboard/">
-                Dashboard
-              </a>
-              <a class="list-group-item" href="/accounts/my-products/">
-                My Products
-              </a>
-              <a class="list-group-item" href="/accounts/add-product/">
-                Add Product
-              </a>
+<!-- Tiny helper script for the character counter (no external deps) -->
+<script>
+  (function () {
+    var textarea = document.getElementById("id_message");
+    var counter = document.getElementById("msg-count");
+    if (textarea && counter) {
+      var update = function () {
+        counter.textContent = textarea.value.length;
+      };
+      textarea.addEventListener("input", update);
+      update();
+    }
+  })();
+</script>
 
-              <a class="list-group-item" href="/accounts/my-orders/">
-                My Orders
-              </a>
-              <a class="list-group-item" href="/accounts/my-sales/">
-                My Sales
-              </a>
-              <a class="list-group-item" href="/accounts/my-requests-sent/">
-                My Sent Requests
-              </a>
-              <a class="list-group-item" href="/accounts/my-requests-received/">
-                My Received Requests
-              </a>
-              <a class="list-group-item" href="/accounts/messages/inbox/">
-                Messages
-              </a>
-
-              <a class="list-group-item" href="/accounts/messages/sent/">
-                Sent
-              </a>
-
-              <a class="list-group-item" href="/accounts/edit-profile/">
-                Edit Profile
-              </a>
-
-              <a class="list-group-item" href="/accounts/change-password/">
-                Change Password
-              </a>
-            </ul>
-            <br />
-            <a class="btn btn-light btn-block" href="/accounts/logout/">
-              <i class="fa fa-power-off"></i> <span class="text">Log out</span>
-            </a>
-          </aside>
-
-          <main class="col-md-9">
-            <a
-              href="javascript:history.back()"
-              class="btn btn-sm btn-light mb-3"
-            >
-              <i class="fa fa-arrow-left mr-1"></i> Back
-            </a>
-
-            <article class="card">
-              <header class="card-header d-flex align-items-center">
-                <!-- Seller avatar -->
-                <div class="mr-3">
-                  <img
-                    src="/static/images/default/default-user.png"
-                    class="rounded-circle"
-                    style="width: 48px; height: 48px; object-fit: cover"
-                    alt="Seller"
-                  />
-                </div>
-
-                <!-- Seller info -->
-                <div class="flex-grow-1">
-                  <strong class="d-block"> Sandhya Dumre </strong>
-                  <small class="text-muted"> Member since Aug 2026 </small>
-                </div>
-
-                <!-- Optional product chip -->
-              </header>
-
-              <div class="card-body">
-                <!-- Django messages -->
-
-                <form method="post" novalidate>
-                  <input
-                    type="hidden"
-                    name="csrfmiddlewaretoken"
-                    value="cWnmpQBGImoJUSE7ICvu1pa23fd5OajfYRm3ZKdndjvP77fWNyiE205u8ja6s4GB"
-                  />
-
-                  <!-- Subject -->
-                  <div class="form-group">
-                    <label for="id_subject" class="font-weight-semibold"
-                      >Subject</label
-                    >
-                    <input
-                      type="text"
-                      name="subject"
-                      class="form-control"
-                      placeholder="Subject"
-                      maxlength="120"
-                      required
-                      id="id_subject"
-                    />
-
-                    <small class="form-text text-muted"
-                      >Be clear and concise (e.g., “Question about
-                      sizing”).</small
-                    >
-                  </div>
-
-                  <!-- Message -->
-                  <div class="form-group mb-1">
-                    <label for="id_message" class="font-weight-semibold"
-                      >Message</label
-                    >
-                    <textarea
-                      name="message"
-                      cols="40"
-                      rows="5"
-                      class="form-control"
-                      placeholder="Write your message…"
-                      required
-                      id="id_message"
-                    ></textarea>
-
-                    <small class="form-text text-muted"
-                      >Include order details or product link if relevant.</small
-                    >
-                  </div>
-
-                  <!-- Character counter -->
-                  <div
-                    class="d-flex justify-content-between align-items-center mb-3"
-                  >
-                    <small class="text-muted">
-                      <span id="msg-count">0</span> characters
-                    </small>
-                  </div>
-
-                  <div class="d-flex justify-content-end">
-                    <button type="submit" class="btn btn-primary">
-                      <i class="fa fa-paper-plane mr-1"></i> Send
-                    </button>
-                  </div>
-                </form>
-              </div>
-            </article>
-          </main>
-        </div>
-      </div>
-    </section>
-
-    <!-- Tiny helper script for the character counter (no external deps) -->
-    <script>
-      (function () {
-        var textarea = document.getElementById("id_message");
-        var counter = document.getElementById("msg-count");
-        if (textarea && counter) {
-          var update = function () {
-            counter.textContent = textarea.value.length;
-          };
-          textarea.addEventListener("input", update);
-          update();
-        }
-      })();
-    </script>
-
-    <!-- ========================= FOOTER ========================= -->
-    <footer class="section-footer border-top">
-      <div class="container">
-        <section class="footer-bottom border-top row">
-          <div class="col-md-2">
-            <p class="text-muted">&copy Mohit Paudel</p>
-          </div>
-          <div class="col-md-8 text-md-center">
-            <span class="px-2">https://www.resuma.xyz/</span>
-            <span class="px-2">None</span>
-            <span class="px-2">None</span>
-          </div>
-          <div class="col-md-2 text-md-right text-muted">
-            <i class="fab fa-lg fa-cc-visa"></i>
-            <i class="fab fa-lg fa-cc-paypal"></i>
-            <i class="fab fa-lg fa-cc-mastercard"></i>
-          </div>
-        </section>
-      </div>
-      <!-- //container -->
-    </footer>
-    <!-- ========================= FOOTER END // ========================= -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-
-    <script>
-      $(document).ready(function () {
-        $(".thumb a").click(function (e) {
-          e.preventDefault();
-          $(".mainImage img").attr("src", $(this).attr("href"));
-        });
-      });
-    </script>
-  </body>
-</html>
+<!-- ========================= FOOTER ========================= -->
+{% endblock content%}

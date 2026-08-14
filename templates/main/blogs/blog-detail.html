@@ -1,0 +1,18 @@
+{% extends 'main/master/base.html' %} {% block content %}
+<div class="card">
+  <div class="card-body">
+    <h2>{{ blog.title }}</h2>
+    <p>{{ blog.content }}</p>
+    {% if blog.blog_image %}
+    <img
+      src="{{ blog.blog_image.url }}"
+      alt="{{ blog.title }}"
+      style="max-width: 300px"
+    />
+    {% else %}
+    <p>No image available for this blog post.</p>
+    {% endif %}
+  </div>
+  <a href="{% url 'blog' %}" class="btn btn-secondary mt-3">← Back to Blogs</a>
+</div>
+{% endblock %}
