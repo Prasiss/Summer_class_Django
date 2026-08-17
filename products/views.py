@@ -1,15 +1,42 @@
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse
+from django.http import HttpResponse,Http404
 from .models import Product,Category
+from django.core.paginator import Paginator
+from carts.models import CartItem
 
 # Create your views here.
 
-def products(request):
-    products = Product.objects.all()
-    return render(request, 'main/products.html',{'products':products})
+def products(request,category_slug=None):
+    cateogories =None
+    products=None
+    if category_slug != None:
+        cateogories = get_object_or_404(Category,slug=category_slug)
+        products = Product.objects.filter(category=cateogories,available=True)
+        paginator = Paginator(products, 3)
+        page= request.GET.get('page')
+        paged_products = paginator.get_page(page)
+        product_count = len(paged_products)
+        
+    else:
+        products = Product.objects.all().filter(available=True)
+        paginator = Paginator(products, 3)
+        page= request.GET.get('page')
+        paged_products = paginator.get_page(page)
+        product_count = len(paged_products)
+        
+    context={
+        'products':paged_products,
+        'product_count':product_count,
+    }
+    return render(request, 'main/products.html', context)
     
-def product_details(request,id):
-    product = get_object_or_404(Product, id=id)
+def product_details(request,category_slug,product_slug):
+    try:
+        product = Product.objects.get(category__slug=category_slug,slug=product_slug)
+        in_cart = CartItem.objects.filter(cart__cart_id=_cart_id(request),product=product).exists()
+    except Product.DoesNotExist:
+        raise Http404 ('Product not found')
+    
     return render(request, 'main/product_details.html',{'product':product})
 
 def add_to_cart(request):

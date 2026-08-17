@@ -252,11 +252,20 @@
               <div class="col-md-4">
                 <figure class="card card-product-grid">
                   <div class="img-wrap">
-                    <img src="{{ product.product_image.url }}" />
+                    {% if product.product_image %}
+                    <a href="{{product.get_url}}"> <img src="{{ product.product_image.url }}" />
+                    </a>
+                    {% else %}
+                    <img src="{{site_setting.default_image.url}}" />
+                    {% endif %}
                   </div>
                   <figcaption class="info-wrap">
-                    <a href="{% url 'product_detail' product.id %}" class="title">{{ product.name }}</a>
+                    <a href="{% product.get_url %}" class="title">{{ product.name }}</a>
                     <div class="price mt-1">${{ product.price }}</div>
+                    {% if product.stock <=5 %}
+                    <p class="text-danger">Hurry! Only {{ product.stock }} left in stock.</p>
+                    {% endif %}
+                    <a href ="{{ product.get_url }}" class="btn btn-block btn-primary">View Details</a>
                   </figcaption>
                 </figure>
               </div>
@@ -265,3 +274,4 @@
       <!-- container .//  -->
     </section>
 {% endblock content %}
+{% include "products/includes/pagination.html" %}
