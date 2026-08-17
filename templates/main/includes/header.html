@@ -95,7 +95,7 @@
         <!-- col.// -->
         <a href="{% url 'products' %}" class="btn btn-outline-primary">Store</a>
         <div class="col-lg col-md-6 col-sm-12 col">
-          <form action="./search-result.html" class="search">
+          <form action="{% url 'search'%}" class="search" method ="GET">
             <div class="input-group w-100">
               <input
                 type="text"
@@ -128,7 +128,7 @@
               <div class="icon icon-sm rounded-circle border">
                 <i class="fa fa-shopping-cart"></i>
               </div>
-              <span class="badge badge-pill badge-danger notify">0</span>
+              <span class="badge badge-pill badge-danger notify">{{cart_count}}</span>
             </a>
           </div>
           <!-- widgets-wrap.// -->

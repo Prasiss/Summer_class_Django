@@ -18,6 +18,7 @@ class ProductAdmin(admin.ModelAdmin):
         'stock',
         'category',
         'status',
+        'slug',
     )
     readonly_fields = ('image_preview',)
     

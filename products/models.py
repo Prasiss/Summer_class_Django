@@ -2,9 +2,11 @@ from django.db import models
 
 # Create your models here.
 from django.urls import reverse
+from django.utils.text import slugify
  
 class Category(models.Model):
     name = models.CharField(max_length=100)
+    slug = models.SlugField(max_length=200, unique=True)
     
     class Meta:
         verbose_name = 'category'
@@ -12,6 +14,10 @@ class Category(models.Model):
         
     def get_url(self):
         return reverse('products_by_category', args=[self.slug])
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.name)
+        super().save(*args, **kwargs)
     def __str__(self):
         return self.name
 
@@ -30,6 +36,11 @@ class Product(models.Model):
     
     def get_url(self):
         return reverse('product_detail', args=[self.category.slug, self.slug])
+    
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.name)
+        super().save(*args, **kwargs)
     
     def __str__(self):
         return self.name
